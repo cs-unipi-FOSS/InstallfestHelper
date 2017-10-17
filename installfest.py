@@ -18,7 +18,8 @@ parser.add_argument("--no-stats", action="store_true", help="Suppresses the 'Pro
 class Person:
     """ Represents a registered attendant. Contains all the info from the registration form. """
     def __init__(self, registration_time, email, name, unipi_student, study_year, linux_experience, fav_distro, Feedback_optin):
-        self.registration_time = datetime.strptime(registration_time, "%d/%m/%Y %I:%M:%S %p")
+        reg_time_raw = registration_time[0:-4] + "AM" if registration_time[-4:] == "π.μ." else registration_time[0:-4] + "PM"  # Converts greek AM/PM to en_us.
+        self.registration_time = datetime.strptime(reg_time_raw, "%d/%m/%Y %I:%M:%S %p")
         self.email = email  # No need to verify. Already verified by Google.
         self.name = name
         self.unipi_student = (unipi_student == "Ναι")
@@ -58,7 +59,7 @@ if __name__ == "__main__":
             if first:
                 first = False
                 continue
-            p = Person(registration_time=row[0][0:-4] + "AΜ" if row[0][-4:-1] == "π.μ." else row[0][0:-4] + "PM",  # Convert the Greek AM/PM to en_US locale standard.
+            p = Person(registration_time=row[0],
                        email=row[1],
                        name=row[2],
                        unipi_student=row[3],
