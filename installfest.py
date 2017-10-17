@@ -27,22 +27,34 @@ class Person:
         self.linux_experience = linux_experience
         self.fav_distro = fav_distro
         self.feedback_optin = (Feedback_optin == "Ναι")
-        self.add_to_feedback_recipients()
 
-    def add_to_feedback_recipients(self):
-        if self.feedback_optin:
-            feedback_recipients.append(self)
 
 class PersonList(list):
+    """A custom list class designed for Person objects. Can be set as a feedback list."""
+    FEEDBACK = False
+    def set_as_feedback_recipient_list(self, personList):
+        for person in personList:
+            if person.feedback_optin:
+                self.append(person)
+        self.FEEDBACK = True
+
+
     def append(self, obj):
+        if self.FEEDBACK:
+            raise ValueError("You cannot append persons to a list designated as a feedback recipient_list")
         if type(obj) != Person:
             raise TypeError("Only Persons can be appended in a PersonList.")
         super(PersonList, self).append(obj)
 
     def get_emails(self):
         output = ""
+        counter = 0
         for person in self:
-            output += person.email + ", "
+            if counter != len(self) - 1:
+                output += person.email + ", "
+            else:
+                output += person.email
+            counter += 1
         return output
 
 data = PersonList()
@@ -72,6 +84,7 @@ if __name__ == "__main__":
     if not args.no_stats:
         print("Parsed", len(data), "registered persons.")
     if args.get_feedback_recipients:
+        feedback_recipients.set_as_feedback_recipient_list(data)
         print(feedback_recipients.get_emails())
     else:
         print(data.get_emails())
