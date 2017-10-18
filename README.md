@@ -1,5 +1,7 @@
 ## Installfest Helper
 
+[![Build Status](https://travis-ci.org/cs-unipi-FOSS/InstallfestHelper.svg?branch=master)](https://travis-ci.org/cs-unipi-FOSS/InstallfestHelper)
+
 Developed by Kyriakos Giannakis - Software Libre Society, University of Piraeus.
 
 This is a little helper script that helped us with organizing the GNU/Linux installfest that took place on Oct 16, 2017 at the University of Piraeus.
