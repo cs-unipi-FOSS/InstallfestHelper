@@ -18,8 +18,8 @@ This is a little helper script that helped us with organizing the GNU/Linux inst
 - Allow installfest.py as executable (`chmod +x installfest.py`).
 - Run `python installfest.py CSVfile` where _CSVfile_ is your input file.
 - Run `python installfest.py -h` or `python installfest.py --help` to see the help message.
-- The parameter _--get-feedback-recipients_ returns a list with all the feedback from recipients.
-- The parameter _--no-stats_ suppresses the 'Processed # Persons' message.
+- The parameter `--get-feedback-recipients` returns a list with the emails of all those who opted in for feedback.
+- The parameter `--no-stats` suppresses the 'Processed # Persons' message.
 
 ### TODO:
 - Extract the emails into a file.
