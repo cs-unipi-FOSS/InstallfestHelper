@@ -15,9 +15,8 @@ This is a little helper script that helped us with organizing the GNU/Linux inst
 ### Usage guidelines:
 - Clone (`git clone https://github.com/cs-unipi-FOSS/InstallfestHelper.git`) or download as zip.
 - Move to InstallfestHelper folder (`cd /path/to/InstallfestHelper`).
-- Allow installfest.py as executable (`chmod +x installfest.py`).
-- Run `python installfest.py CSVfile` where _CSVfile_ is your input file.
-- Run `python installfest.py -h` or `python installfest.py --help` to see the help message.
+- Run `python3 installfest.py CSVfile` where _CSVfile_ is your input file.
+- Run `python3 installfest.py -h` or `python installfest.py --help` to see the help message.
 - The parameter `--get-feedback-recipients` returns a list with the emails of all those who opted in for feedback.
 - The parameter `--no-stats` suppresses the 'Processed # Persons' message.
 
